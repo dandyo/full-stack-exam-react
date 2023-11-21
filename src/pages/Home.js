@@ -2,8 +2,10 @@ import { useEffect, useContext } from "react";
 import { AuthContext } from "../AuthContext";
 import { usePostsContext } from "../hooks/usePostsContext"
 
-import { Box, Button, Typography, Card, CardContent } from '@mui/material';
-import PostForm from "../components/postForm";
+import { Box, Button, Typography } from '@mui/material';
+// import PostForm from "../components/PostForm";
+import PostForm from "../components/PostForm"
+import PostDetails from "../components/PostDetails";
 
 function Home() {
     const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -47,15 +49,7 @@ function Home() {
             {isAuthenticated && <PostForm />}
 
             {posts && posts.map((post) => (
-                // <WorkoutDetails key={workout._id} workout={workout} />
-                <Card sx={{ marginBottom: 2 }}>
-                    <CardContent>
-                        <Typography sx={{}} gutterBottom>
-                            {post.caption}
-                            {post.image}
-                        </Typography>
-                    </CardContent>
-                </Card>
+                <PostDetails key={post._id} post={post} />
             ))}
         </Box >
     </>
